@@ -83,6 +83,8 @@ curl -s -L -o /tmp/wkhtmltox.deb http://download.gna.org/wkhtmltopdf/0.12/0.12.2
 dpkg -i /tmp/wkhtmltox.deb && rm /tmp/wkhtmltox.deb && \
 docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib && docker-php-ext-install sockets intl zip mbstring mcrypt gd && \
 pecl install imagick-beta && \
+  echo "extension=imagick.so" >> "/usr/local/etc/php/conf.d/ext-imagick.ini" &&  \
+  echo "date.timezone=UTC" >> "/usr/local/etc/php/conf.d/timezone.ini" && \
 ln -sf /proc/1/fd/1 /var/log/nginx/access.log && \
 ln -sf /proc/1/fd/2 /var/log/nginx/error.log && \
 dpkg --purge libicu-dev libmagickcore-dev libmagickwand-dev libmagick++-dev libssl-dev libfreetype6-dev libmagickcore-6.q16-dev libgraphviz-dev libglib2.0-dev libtiff5-dev libwmf-dev libcairo2-dev libgdk-pixbuf2.0-dev libfontconfig1-dev librsvg2-dev libmagickwand-6.q16-dev libmagick++-6.q16-dev && \
